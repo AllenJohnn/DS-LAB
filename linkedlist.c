@@ -33,6 +33,25 @@ void insert_begi()
 }
 
 
+void insert_end()
+{
+	create();
+	if(head == NULL)
+	{
+		head = new;
+	}
+	else
+	{
+	l = head;
+	while(l ->next != NULL)
+	{
+		l = l ->next;
+	}
+		l -> next = new;
+	}
+}		
+
+
 void display()
 {
 
@@ -52,12 +71,6 @@ struct node * l;
 	}
 }	
 	 
-
-
-
-
-
-
 
 
 

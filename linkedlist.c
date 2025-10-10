@@ -5,7 +5,8 @@ struct node
 	int data;
 	struct node * next;
 };
-struct node * new, *x, *head;
+struct node * new, *x, *head, *l;
+int count = 0;
 
 void create()
 {
@@ -18,7 +19,7 @@ void create()
 }
 
 
-void insert_begi()
+void insert_begin()
 {
 	create();
 	if (head==NULL)
@@ -30,6 +31,7 @@ void insert_begi()
 	new ->next=head;
 	head = new;
 	}
+	count++;
 }
 
 
@@ -42,13 +44,14 @@ void insert_end()
 	}
 	else
 	{
-	l = head;
-	while(l ->next != NULL)
-	{
-		l = l ->next;
-	}
+		l = head;
+		while(l ->next != NULL)
+		{
+			l = l ->next;
+		}
 		l -> next = new;
 	}
+	count++;
 }		
 
 
@@ -71,14 +74,50 @@ struct node * l;
 	}
 }	
 	 
-
-
+	 
+	 
+void insert_pos()
+{
+printf("Enter The Position To Which The Value To Be Inserted: ");
+int pos,i;
+scanf("%d",&pos);	 
+if (pos == 1)
+	{
+	insert_begin();
+	}
+	else if(pos == count + 1)
+	{
+	insert_end();
+	}
+	else if (pos > count + 1)
+	{
+	printf("Invalid Choice Of Position!!");
+	}
+	else
+	{
+	create();
+	for (i = 0; i < pos - 2; i++)
+	{
+	l = l->next;
+	}
+	new->next = l->next;
+	l->next = new;
+	count++;
+	}
+	
+	
+}	
+	
 
 
 void main()
 {
-	insert_begi();
-	insert_begi();
-	insert_begi();
+	insert_begin();
+	insert_begin();
+	insert_begin();
+	display();
+	insert_end();
+	display();
+	insert_pos();
 	display();
 }	

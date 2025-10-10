@@ -94,16 +94,17 @@ if (pos == 1)
 	printf("Invalid Choice Of Position!!");
 	}
 	else
-	{
-	create();
-	for (i = 0; i < pos - 2; i++)
-	{
-	l = l->next;
-	}
-	new->next = l->next;
-	l->next = new;
-	count++;
-	}
+		{
+		create();
+		l = head;
+		for (i = 0; i < pos - 2; i++)
+			{
+				l = l->next;
+			}
+		new->next = l->next;
+		l->next = new;
+		count++;
+		}	
 	
 	
 }	

@@ -109,6 +109,7 @@ void del_beg()
 	{
 		t=head;
 		head=head->next;
+		free(t);
 		count--;
 	}
 }

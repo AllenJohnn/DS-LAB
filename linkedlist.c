@@ -53,7 +53,7 @@ void insert_end()
 
 void insert_anypos()
 {
-	int pos;
+	int pos,i;
 	printf("Enter the position : ");
 	scanf("%d",&pos);
 	if(pos==1)
@@ -72,7 +72,7 @@ void insert_anypos()
 	{
 		create();
 		l=head;
-		for(int i=0;i<pos-2;i++)
+		for(i=0;i<pos-2;i++)
 		{
 			l=l->next;
 		}
@@ -187,8 +187,8 @@ else
 	
 void main()
 {
-	int op;
-	while(op!=5)
+	int ch;
+	while(ch!=5)
 	{
 		printf("\n\tMENU\n------------------------------------\n1)Insert At Begining\n2)Insert At End\n3)Insert At Any Position\n4)Display\n5)Exit\n6)Delete From Begining\n7)Delete From End\n8)Delete From Any Position\nEnter your choice : ");
 		scanf("%d",&op);

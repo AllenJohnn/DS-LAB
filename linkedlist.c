@@ -7,7 +7,7 @@ struct node
 	struct node *next;
 };
  
-struct node *new, *head, *l, *sl, *t;
+struct node *new, *head, *l, *sl, *t, *n, *pn;
 int count=0;
 void create()
 {
@@ -19,7 +19,7 @@ void create()
 	new->next=NULL;
 	count++;
 }                                                                                                                                             
-void insert_beg()
+void insert_begin()
 {
 	create();
 	if(head==NULL)
@@ -58,7 +58,7 @@ void insert_anypos()
 	scanf("%d",&pos);
 	if(pos==1)
 	{
-		insert_beg();
+		insert_begin();
 	}
 	else if(pos==count+1)
 	{
@@ -99,7 +99,7 @@ void display()
 	}
 }
 
-void del_beg()
+void del_begin()
 {
 	if(head==NULL)
 	{
@@ -141,18 +141,61 @@ void del_end()
 		count--;
 	}
 }
+
+
+
+void del_pos()
+{
+int i,pos;
+	printf("Enter The Position From Which To Be Deleted:");
+	scanf("%d",&pos);
+if (head == NULL)
+	{
+	printf("EMPTY!!");
+	}
+	
+else
+		{
+		if (pos == 1)
+			{
+				del_begin();
+			}
+		else if (pos == count)
+			{
+				del_end();
+			}
+		else if	(pos > count)
+			{
+			printf("Invalid Position");
+			}
+		else
+			{
+			n = pn = head;
+			for(i=0;i<pos-1;i++)
+				{
+				pn = n;
+				n = n->next;
+				}
+				pn->next= n->next;
+				free(n);
+				count--;
+			}
+		}
+}			
+			
+
 	
 void main()
 {
 	int op;
 	while(op!=5)
 	{
-		printf("\n\tMENU\n------------------------------------\n1)Insert at beg\n2)Insert at end\n3)Insert at any pos\n4)Display\n5)Exit\n6)Delete at beg\n7)Delete At End\nEnter your choice : ");
+		printf("\n\tMENU\n------------------------------------\n1)Insert At Begining\n2)Insert At End\n3)Insert At Any Position\n4)Display\n5)Exit\n6)Delete From Begining\n7)Delete From End\n8)Delete From Any Position\nEnter your choice : ");
 		scanf("%d",&op);
 		switch(op)
 		{
 			case 1:
-				insert_beg();
+				insert_begin();
 				break;
 			case 2:
 				insert_end();
@@ -166,11 +209,13 @@ void main()
 			case 5:
 				break;
 			case 6:
-				del_beg();
+				del_begin();
 				break;
 			case 7:
 				del_end();
 				break;
+			case 8:
+				del_pos();	
 			default:
 				printf("Invalid choice");
 		}

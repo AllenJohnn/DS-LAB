@@ -86,7 +86,7 @@ void display()
 {
 	if(head==NULL)
 	{
-		printf("Empty LL");
+		printf("Empty Linked List");
 	}
 	else
 	{
@@ -103,7 +103,7 @@ void del_begin()
 {
 	if(head==NULL)
 	{
-		printf("LL is empty");
+		printf("Linked List is empty");
 	}
 	else
 	{
@@ -117,7 +117,7 @@ void del_end()
 {
 	if(head==NULL)
 	{
-		printf("LL is empty");
+		printf("Linked List is empty");
 	}
 	else if(head->next==NULL)
 	{
@@ -188,11 +188,11 @@ else
 void main()
 {
 	int ch;
-	while(ch!=5)
+	while(ch!=8)
 	{
-		printf("\n\tMENU\n------------------------------------\n1)Insert At Begining\n2)Insert At End\n3)Insert At Any Position\n4)Display\n5)Exit\n6)Delete From Begining\n7)Delete From End\n8)Delete From Any Position\nEnter your choice : ");
-		scanf("%d",&op);
-		switch(op)
+		printf("\n\tMENU\n----------------------------\n1)Insert At Begining\n2)Insert At End\n3)Insert At Any Position\n4)Delete From Begining\n5)Delete From End\n6)Delete From Any Position\n7)Display\n8)Exit\nEnter your choice : ");
+		scanf("%d",&ch);
+		switch(ch)
 		{
 			case 1:
 				insert_begin();
@@ -204,18 +204,19 @@ void main()
 				insert_anypos();
 				break;
 			case 4:
-				display();
-				break;
-			case 5:
-				break;
-			case 6:
 				del_begin();
 				break;
-			case 7:
+			case 5:
 				del_end();
 				break;
+			case 6:
+				del_pos();
+				break;
+			case 7:
+				display();
+				break;
 			case 8:
-				del_pos();	
+				break;	
 			default:
 				printf("Invalid choice");
 		}

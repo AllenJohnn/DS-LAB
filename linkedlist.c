@@ -109,7 +109,6 @@ void del_beg()
 	{
 		t=head;
 		head=head->next;
-		free(t);
 		count--;
 	}
 }
@@ -133,8 +132,9 @@ void del_end()
 		sl=l=head;
 		while(l->next!=NULL)
 		{
-			l=l->next;
 			sl=l;
+			l=l->next;
+			
 		}
 		sl->next=NULL;
 		free(l);
@@ -147,7 +147,7 @@ void main()
 	int op;
 	while(op!=5)
 	{
-		printf("\n\tMENU\n------------------------------------\n1)Insert at beg\n2)Insert at end\n3)Insert at any pos\n4)display\n5)Exit\n6)del at beg\nEnter your choice : ");
+		printf("\n\tMENU\n------------------------------------\n1)Insert at beg\n2)Insert at end\n3)Insert at any pos\n4)Display\n5)Exit\n6)Delete at beg\n7)Delete At End\nEnter your choice : ");
 		scanf("%d",&op);
 		switch(op)
 		{

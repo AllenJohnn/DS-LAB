@@ -1,110 +1,112 @@
 #include<stdio.h>
-int top=-1,max=0;
-int STACK[100];
+#include<stdlib.h>
 
-//pop
+int stack[5];
+int value,top=-1;
+
+
+void push()
+{
+    if(top==4)
+    {
+        printf("The Stack Is Full!!");
+    }
+    else
+    {
+        top++;
+        printf("Enter The Value To Be Inserted To The Stack");
+        scanf("%d",&value);
+        stack[top]=value;
+    }    
+}
+
 void pop()
-	{
-	if(top==-1)
-		{
-		printf("Stack is empty");
-		return;
-		}
-	printf("Popped item is %d\n",STACK[top]);
-	top--;
-	}
-	
-//push	
-void push(int val){
-	if(top==max-1)
-		{
-		printf("Stack is full");
-		return;
-		}
-	top++;
-	STACK[top]=val;
-	}
-//display
-void display()
-	{
-	if(top==-1)
-		{
-		printf("Stack is empty");
-		return;
-		}
-	int top2=top;
-	while(top2!=-1)
-		{
-		printf("%d\n",STACK[top2]);
-		top2--;
-		}
-	}
-void is_full()
-	{
-	if(top==max-1)
-		printf("Stack is full");
-	else
-		printf("Stack is not full");
-	return;			
-	}
-void is_empty()
-	{
-	if(top==-1)
-		printf("Stack is Empty");
-	else
-		printf("Stack is not Empty");
-	return;			
-	}	
-void peak()
-	{
-	if(top==-1)
-		{
-		printf("Stack is empty");
-		return;
-		}
-	printf("Peaked item is %d\n",STACK[top]);
-	}
-void main()
-	{
-	int op,val;
-	while(1){
-	printf("Enter the size of the Stack : ");
-	scanf("%d",&max);
-	if(max>0 && 100>max)
-	 break;
-	else
-	printf("Invalid Value\n");
-	}
-	while(op!=7){
-	printf("\n\tMENU\n------------------------------------\n1)Push\n2)Pop\n3)Display\n4)Peak\n5)Is Full\n6)Is Empty\n7)Exit\nEnter your choice : ");
-	scanf("%d",&op);
-	switch(op)
-	{
-	case 1:
-		printf("Enter the value to push : ");
-		scanf("%d",&val);
-		push(val);
-		break;
-	case 2:
-		pop();
-		break;
-	case 3:
-		display();
-		break;
-	case 4:
-		peak();
-		break;
-	case 5:
-		is_full();
-		break;
-	case 6:
-		is_empty();
-		break;
-	case 7:
-		break;
-	default:
-		printf("Invalid choice");
-	}
-	}
-	}
+{
+    if(top==-1)
+    {
+        printf("Stack Underflow!!");
+    }
+    else
+    {
+        printf("The Value %d has been Popped Out Of The Stack",stack[top]);
+        top--;
+    }
+}
 
+void display()
+{
+    printf("The Elements In The Stack Are: ");
+    int i;
+    for(i=top;i>=0;i--)
+    {
+        printf("%d",stack[i]);
+    }
+}
+
+
+void peek()
+{
+    if(top == -1)
+    {
+        printf("The Stack Is Empty");
+    }
+    else
+    {
+        printf("The Top Most Element In The Stack Is %d",stack[top]);
+    }
+}
+
+void isfull()
+{
+    if(top==4)
+    {
+        printf("The Stack Is Full");
+    }
+    else
+    {
+        printf("The Stack Is Not Empty!!");
+    }
+}
+
+void isempty()
+{
+    if(top==-1)
+    {
+        printf("The Stack Is Empty");
+    }
+    else
+    {
+        printf("The Stack Is Not Empty");
+    }
+}
+
+
+void main()
+{
+
+int ch;
+while(1)
+{
+    printf("\n1)Push\n2)Pop\n3)Display\n4)Peek\n5)IsFull\n6)IsEmpty\n7)Exit\nEnter Your Choice");
+    scanf("%d",&ch);
+    switch(ch)
+    {
+        case 1 :push();
+        break;
+        case 2 :pop();
+        break;
+        case 3 :display();
+        break;
+        case 4 :peek();
+        break;
+        case 5 :isfull();
+        break;
+        case 6 :isempty();
+        break;
+        case 7 :exit(0);
+        break;
+        default: printf("You Entered An Invalid Choice");
+        break;
+    }
+}
+}

@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SIZE 5
-int queue[SIZE];
+
+int queue[5];
 int front = -1, rear = -1;
 int value;
 
 void enqueue()
 {
-    if ((front == 0 && rear == SIZE - 1) || (front == rear + 1))
+    if ((front == 0 && rear == 4) || (front == rear + 1))
     {
         printf("Queue Overflow!!\n");
     }
@@ -19,7 +19,7 @@ void enqueue()
 
         if (front == -1)
             front = rear = 0;
-        else if (rear == SIZE - 1)
+        else if (rear == 4)
             rear = 0; // wrap around
         else
             rear++;
@@ -44,7 +44,7 @@ void dequeue()
             // Queue becomes empty
             front = rear = -1;
         }
-        else if (front == SIZE - 1)
+        else if (front == 4)
         {
             front = 0; // wrap around
         }
@@ -70,7 +70,7 @@ void display()
             printf("%d ", queue[i]);
             if (i == rear)
                 break;
-            i = (i + 1) % SIZE; // move circularly
+            i = (i + 1) % 4; // move circularly
         }
         printf("\n");
     }

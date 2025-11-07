@@ -21,7 +21,7 @@ void create() {
     count++;
 }
 
-void ins_big()
+void ins_beg()
 {
     create();
     
@@ -57,7 +57,7 @@ void ins_end()
    
 }
 
-void ins_pos() 
+void ins_anypos() 
 {
      int pos;
     printf("\nEnter The Position To Insert The Node: ");
@@ -202,13 +202,13 @@ void main()
 		switch(op)
 		{
 			case 1:
-				ins_big();
+				ins_beg();
 				break;
 			case 2:
 				ins_end();
 				break;
 			case 3:
-				ins_pos();
+				ins_anypos();
 				break;
 			case 4:
 				del_beg();

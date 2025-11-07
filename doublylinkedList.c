@@ -93,23 +93,34 @@ void ins_pos()
 
 
 
-void del_begin() {
-    if (head == NULL) {
+void del_begin() 
+{
+    if (head == NULL)
+     {
         printf("Linked List is empty\n");
-    } else {
+     } 
+     else 
+     {
         t = head;
-        if (head->next == NULL) {
+        if (head->next == NULL) 
+        {
             free(head);
             head = NULL;
-        } else {
+        } 
+          else 
+          {
             head = head->next;
             head->prev = NULL;
             free(t);
-        }
+          }
         count--;
         printf("Deleted from beginning\n");
     }
 }
+
+
+void del_end()
+
 
 
 

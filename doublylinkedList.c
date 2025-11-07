@@ -13,7 +13,7 @@ struct node *new, *head = NULL, *l, *t, *sl, *n, *pn;
 void create() {
     int x;  
     new = (struct node*) malloc(sizeof(struct node));
-    printf("\nEnter the value to insert: ");
+    printf("\nEnter The Value To Be Inserted: ");
     scanf("%d", &x);
     new->data = x;
     new->prev=NULL;
@@ -60,7 +60,7 @@ void ins_end()
 void ins_pos() 
 {
      int pos;
-    printf("\nEnter the position to insert the node: ");
+    printf("\nEnter The Position To Insert The Node: ");
     scanf("%d", &pos);
     if (pos == 1) 
     {
@@ -72,7 +72,7 @@ void ins_pos()
     } 
     else if (pos > count + 1) 
     {
-        printf("\nInvalid position!\n");
+        printf("\nInvalid Position!\n");
     } 
     else 
     {
@@ -95,7 +95,7 @@ void del_beg()
 {
 	if(head==NULL)
 	{
-	printf("List is Empty!!");
+	printf("Linked List Is Empty!!");
 	}
 	else if(head->next==NULL)
 	{
@@ -118,7 +118,7 @@ void del_end()
 {
 	if(head==NULL)
 	{
-		printf("LL is empty");
+		printf("Linked List Is Empty");
 	}
 	else if(head->next==NULL)
 	{
@@ -145,7 +145,7 @@ void del_end()
 void del_anypos()
 {
 	int pos;
-	printf("Enter the position : ");
+	printf("Enter The Position From Where To Be Deleted : ");
 	scanf("%d",&pos);
 	if(pos==1)
 	{
@@ -157,7 +157,7 @@ void del_anypos()
 	}
 	else if(pos>count)
 	{
-		printf("Invalid position");
+		printf("Invalid Position");
 	}
 	else
 	{
@@ -178,10 +178,10 @@ void display()
 {
     if (head == NULL) 
     {
-        printf("\nList is empty!\n");
+        printf("\nLinked List Is Empty!\n");
     } else 
     {
-        printf("\nLinked List: ");
+        printf("\nLinked List Is: ");
         l = head;
         while (l != NULL) 
         {
@@ -225,7 +225,7 @@ void main()
 			case 8:
 				break;
 			default:
-				printf("Invalid choice");
+				printf("Invalid Choice");
 		}
 	}
 }	

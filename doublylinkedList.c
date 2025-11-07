@@ -21,26 +21,33 @@ void create() {
     count++;
 }
 
-void ins_big() {
+void ins_big()
+{
     create();
     
-    if (head == NULL) {
+    if (head == NULL)
+    {
         head = new;
-    } else {
+    } else 
+    	{
         new->next = head;
         head->prev=new;
         head = new;
-    }
+    	}
     
 }
 
-void ins_end() {
+void ins_end() 
+{
     create();
-    if (head == NULL) {
+    if (head == NULL) 
+    {
         head = new;
-    } else {
+    } else 
+    {
         l = head;
-        while (l->next != NULL) {
+        while (l->next != NULL) 
+        {
             l = l->next;
         }
         new->prev=l;
@@ -50,21 +57,29 @@ void ins_end() {
    
 }
 
-void ins_pos() {
-     
-    int pos;
+void ins_pos() 
+{
+     int pos;
     printf("\nEnter the position to insert the node: ");
     scanf("%d", &pos);
-    if (pos == 1) {
+    if (pos == 1) 
+    {
         ins_big();
-    } else if (pos == count + 1) {
+    } 
+    else if (pos == count + 1) 
+    {
         ins_end();
-    } else if (pos > count + 1) {
+    } 
+    else if (pos > count + 1) 
+    {
         printf("\nInvalid position!\n");
-    } else {
+    } 
+    else 
+    {
         create();
         l = head;
-        for (int i = 0; i < pos - 2; i++) {
+        for (int i = 0; i < pos - 2; i++) 
+        {
             l = l->next;
         }
         new->prev=l;
@@ -76,17 +91,21 @@ void ins_pos() {
 }
 
 
-void del_beg(){
-if(head==NULL){
+void del_beg()
+{
+	if(head==NULL)
+	{
 	printf("List is Empty!!");
 	}
-else if(head->next==NULL){
+	else if(head->next==NULL)
+	{
 	l=head;
 	head=NULL;
 	free(l);
 	count--;
-}
-else{
+	}
+	else
+	{
 	t=head;
 	head=head->next;
 	head->prev=NULL;
@@ -155,13 +174,17 @@ void del_anypos()
 	}
 }
 
-void display() {
-    if (head == NULL) {
+void display() 
+{
+    if (head == NULL) 
+    {
         printf("\nList is empty!\n");
-    } else {
+    } else 
+    {
         printf("\nLinked List: ");
         l = head;
-        while (l != NULL) {
+        while (l != NULL) 
+        {
             printf("%d ", l->data);
             l = l->next;
         }
@@ -174,7 +197,7 @@ void main()
 	int op;
 	while(op!=8)
 	{
-		printf("\n\tMENU\n------------------------------------\n1)Insert at beg\n2)Insert at end\n3)Insert at any pos\n4)del at beg\n5)del at end\n6)del at any position\n7)Display\n8)Exit\nEnter your choice : ");
+		printf("\n\tMENU\n------------------------------------\n1)Insert At Beginning\n2)Insert At End\n3)Insert At Any Position\n4)Deletion At Beginning\n5)Deletion At End\n6)Deletion From Any Position\n7)Display\n8)Exit\nEnter your choice : ");
 		scanf("%d",&op);
 		switch(op)
 		{

@@ -1,188 +1,208 @@
 #include<stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
 
-struct node
-{
-    struct node *prev;
+int count = 0;
+struct node {
     int data;
+    struct node *prev;
     struct node *next;
 };
 
-struct node *new, *head = NULL, *l, *t;
-int count = 0, x, pos, i;
+struct node *new, *head = NULL, *l, *t, *sl, *n, *pn;
 
-void create()
-{
-    new = (struct node*)malloc(sizeof(struct node));
-    printf("\nEnter a value to be inserted: ");
+void create() {
+    int x;  
+    new = (struct node*) malloc(sizeof(struct node));
+    printf("\nEnter the value to insert: ");
     scanf("%d", &x);
     new->data = x;
-    new->prev = NULL;
+    new->prev=NULL;
     new->next = NULL;
     count++;
 }
 
-void ins_beg()
-{
+void ins_big() {
     create();
-    if(head == NULL)
-    {
+    
+    if (head == NULL) {
         head = new;
-    }
-    else
-    {
+    } else {
         new->next = head;
-        head->prev = new; 
+        head->prev=new;
         head = new;
     }
-    printf("Inserted at beginning\n");
+    
 }
 
-void ins_end()
-{
+void ins_end() {
     create();
-    if(head == NULL)
-    {
+    if (head == NULL) {
         head = new;
-    }
-    else
-    {
+    } else {
         l = head;
-        while(l->next != NULL)
-        {
+        while (l->next != NULL) {
             l = l->next;
         }
-        new->prev = l;
+        new->prev=l;
         l->next = new;
+        
     }
-    printf("Inserted at end\n");
+   
 }
 
-void ins_pos()
-{
-    printf("\nEnter position to insert: ");
+void ins_pos() {
+     
+    int pos;
+    printf("\nEnter the position to insert the node: ");
     scanf("%d", &pos);
-
-    if(pos == 1)
-    {
-        ins_beg();
-    }
-    else if(pos == count + 1)
-    {
+    if (pos == 1) {
+        ins_big();
+    } else if (pos == count + 1) {
         ins_end();
-    }
-    else if(pos > count + 1 || pos < 1)
-    {
-        printf("Invalid position\n");
-    }
-    else
-    {
+    } else if (pos > count + 1) {
+        printf("\nInvalid position!\n");
+    } else {
         create();
         l = head;
-        for(i = 0; i < pos - 2; i++)
-        {
+        for (int i = 0; i < pos - 2; i++) {
             l = l->next;
         }
-        new->prev = l;
+        new->prev=l;
         new->next = l->next;
-        l->next->prev = new;
+        l->next->prev=new;
         l->next = new;
-        printf("Inserted at position %d\n", pos);
+        count++;
     }
 }
 
 
-
-void del_begin() 
-{
-    if (head == NULL)
-     {
-        printf("Linked List is empty\n");
-     } 
-     else 
-     {
-        t = head;
-        if (head->next == NULL) 
-        {
-            free(head);
-            head = NULL;
-        } 
-          else 
-          {
-            head = head->next;
-            head->prev = NULL;
-            free(t);
-          }
-        count--;
-        printf("Deleted from beginning\n");
-    }
+void del_beg(){
+if(head==NULL){
+	printf("List is Empty!!");
+	}
+else if(head->next==NULL){
+	l=head;
+	head=NULL;
+	free(l);
+	count--;
 }
-
+else{
+	t=head;
+	head=head->next;
+	head->prev=NULL;
+	free(t);
+	count--;
+	}	
+}
 
 void del_end()
-
-
-
-
-void display()
 {
-    if(head == NULL)
-    {
-        printf("\nEmpty Linked List.\n");
-    }
-    else
-    {
+	if(head==NULL)
+	{
+		printf("LL is empty");
+	}
+	else if(head->next==NULL)
+	{
+		l=head;
+		head=NULL;
+		free(l);
+		count--;
+		
+	}
+	else
+	{
+		sl=l=head;
+		while(l->next!=NULL)
+		{
+			sl=l;
+			l=l->next;
+		}
+		sl->next=NULL;
+		free(l);
+		count--;
+	}
+}
+
+void del_anypos()
+{
+	int pos;
+	printf("Enter the position : ");
+	scanf("%d",&pos);
+	if(pos==1)
+	{
+		del_beg();
+	}
+	else if(pos==count)
+	{
+		del_end();
+	}
+	else if(pos>count)
+	{
+		printf("Invalid position");
+	}
+	else
+	{
+		sl=l=head;
+		for(int i=0;i<pos-1;i++)
+		{
+			sl=l;
+			l=l->next;
+		}
+		sl->next=l->next;
+		l->next->prev=sl;
+		free(l);
+		count--;
+	}
+}
+
+void display() {
+    if (head == NULL) {
+        printf("\nList is empty!\n");
+    } else {
+        printf("\nLinked List: ");
         l = head;
-        printf("\nDoubly Linked List elements:\n");
-        while(l != NULL)
-        {
-            printf("%d\t", l->data);
+        while (l != NULL) {
+            printf("%d ", l->data);
             l = l->next;
         }
         printf("\n");
     }
 }
 
-
-
-int main()
+void main()
 {
-    int choice;
-
-    while(1)
-    {
-        printf("\n--- DOUBLY LINKED LIST MENU ---\n");
-        printf("1. Insert at Beginning\n");
-        printf("2. Insert at End\n");
-        printf("3. Insert at Position\n");
-        printf("4. Display\n");
-        printf("5. Delete From Beginning\n");
-        printf("6. Exit\n");
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
-
-        switch(choice)
-        {
-            case 1:
-                ins_beg();
-                break;
-            case 2:
-                ins_end();
-                break;
-            case 3:
-                ins_pos();
-                break;
-            case 4:
-                display();
-                break;
-            case 5:
-           	 del_begin();
-            	break;
-            case 6:
-            	break;
-            default:
-                printf("Invalid choice!\n");
-        }
-    }
-    return 0;
-}
+	int op;
+	while(op!=8)
+	{
+		printf("\n\tMENU\n------------------------------------\n1)Insert at beg\n2)Insert at end\n3)Insert at any pos\n4)del at beg\n5)del at end\n6)del at any position\n7)Display\n8)Exit\nEnter your choice : ");
+		scanf("%d",&op);
+		switch(op)
+		{
+			case 1:
+				ins_big();
+				break;
+			case 2:
+				ins_end();
+				break;
+			case 3:
+				ins_pos();
+				break;
+			case 4:
+				del_beg();
+				break;
+			case 5:
+				del_end();
+				break;
+			case 6:
+				del_anypos();
+				break;
+			case 7:
+				display();
+				break;
+			case 8:
+				break;
+			default:
+				printf("Invalid choice");
+		}
+	}
+}	

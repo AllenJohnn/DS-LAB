@@ -64,7 +64,7 @@ void ins_anypos()
     scanf("%d", &pos);
     if (pos == 1) 
     {
-        ins_big();
+        ins_beg();
     } 
     else if (pos == count + 1) 
     {

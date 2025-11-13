@@ -1,0 +1,72 @@
+#include<stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+	struct node * lchild;
+	int data;
+	struct node * rchild;
+};
+
+struct node * root = NULL, * new;
+
+// Create
+void create()
+{
+	new = (struct node*) malloc(sizeof(struct node));
+	printf("Enter The Value To Be Inserted: ");
+	int x;
+	scanf("%d",&x);
+	new->data=x;
+	new->lchild=NULL;
+	new->rchild=NULL;
+}
+
+
+//Search
+void search(struct node * rt)
+{
+	if((new->data < rt->data) && (rt->lchild == NULL))
+		{
+			rt->lchild = new;
+		}
+	else if((new->data > rt->data) && (rt->rchild == NULL))
+		{
+			rt->rchild = new;
+		}
+	else if((new->data < rt->data) && (rt->lchild != NULL))
+		{
+			search(rt->lchild);
+		}
+	else if((new->data > rt->data) && (rt->rchild != NULL))
+		{
+			search(rt->rchild);
+		}
+	else
+		{
+		printf("Invalid!!");
+		}
+}
+
+
+//Insert
+void insert()
+{
+create();
+if(root == NULL)
+{
+root = new;
+}
+else
+{
+search(root);
+}
+}
+
+
+void main() 
+{
+insert();
+insert();
+}
+

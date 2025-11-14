@@ -3,21 +3,22 @@
 
 // Create Structre
 struct node
-{  struct node *lchild;
-   int data;
-   struct node *rchild;
+{  
+	struct node *lchild;
+   	int data;
+   	struct node *rchild;
 };
 struct node *root=NULL,*new;
 
 void create()
 {
- new=(struct node *)malloc(sizeof(struct node));
- printf("Enter the value: ");
- int x;
- scanf("%d",&x);
- new->data=x;
- new->lchild=NULL;
- new->rchild=NULL;
+	 new=(struct node *)malloc(sizeof(struct node));
+	 printf("Enter the value: ");
+	 int x;
+	 scanf("%d",&x);
+	 new->data=x;
+	 new->lchild=NULL;
+	 new->rchild=NULL;
 }
 
 

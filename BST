@@ -4,126 +4,131 @@
 // Create Structre
 struct node
 {  
-	struct node *lchild;
-   	int data;
-   	struct node *rchild;
+    struct node *lchild;
+    int data;
+    struct node *rchild;
 };
-struct node *root=NULL,*new;
+
+struct node *root = NULL, *new;
 
 void create()
 {
-	 new=(struct node *)malloc(sizeof(struct node));
-	 printf("Enter the value: ");
-	 int x;
-	 scanf("%d",&x);
-	 new->data=x;
-	 new->lchild=NULL;
-	 new->rchild=NULL;
+    new = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the value: ");
+    int x;
+    scanf("%d", &x);
+    new->data = x;
+    new->lchild = NULL;
+    new->rchild = NULL;
 }
 
-
-void search(struct node * rt)
+void search(struct node *rt)
 {
-  if((new->data<rt->data)&&(rt->lchild==NULL))
-  {
-     rt->lchild=new;
-  }
-  else if((new->data>rt->data)&&(rt->rchild==NULL))
-  {
-     rt->rchild=new;
-  }
-  else if((new->data<rt->data)&&(rt->lchild!=NULL))
-  {
-     search(rt->lchild);
-  }
-  else if((new->data>rt->data)&&(rt->rchild!=NULL))
-  {
-     search(rt->rchild);
-  }
-  else
-  {
-    printf("Invalid");
-  }
+    if ((new->data < rt->data) && (rt->lchild == NULL))
+    {
+        rt->lchild = new;
+    }
+    else if ((new->data > rt->data) && (rt->rchild == NULL))
+    {
+        rt->rchild = new;
+    }
+    else if ((new->data < rt->data) && (rt->lchild != NULL))
+    {
+        search(rt->lchild);
+    }
+    else if ((new->data > rt->data) && (rt->rchild != NULL))
+    {
+        search(rt->rchild);
+    }
+    else
+    {
+        printf("Invalid\n");
+    }
 }
 
 void insert()
 {
-   create();
-   if(root==NULL)
-   {
-      root=new;
-   }
-   else
-   {
-      search(root);
-   }
+    create();
+    if (root == NULL)
+    {
+        root = new;
+    }
+    else
+    {
+        search(root);
+    }
 }
-
 
 // Inorder LNR
 void inorder(struct node *rt)
-   { 
-     if(rt!=NULL)
-     { 
-       inorder(rt->lchild);
-       printf("%d ",rt->data);
-       inorder(rt->rchild);
-      
-     }
-   }
-   
+{
+    if (rt != NULL)
+    {
+        inorder(rt->lchild);
+        printf("%d ", rt->data);
+        inorder(rt->rchild);
+    }
+}
+
 // PreOrder NLR  
 void preorder(struct node *rt)
-   { 
-     if(rt!=NULL)
-     { 
-       printf("%d ",rt->data);
-       preorder(rt->lchild);
-       preorder(rt->rchild);
-     
-       
-     }
-   }
-   
+{
+    if (rt != NULL)
+    {
+        printf("%d ", rt->data);
+        preorder(rt->lchild);
+        preorder(rt->rchild);
+    }
+}
 
-//PostOrder LRN   
+// PostOrder LRN   
 void postorder(struct node *rt)
-   { 
-     if(rt!=NULL)
-     { 
-       postorder(rt->lchild);
-       postorder(rt->rchild);
-       printf("%d ",rt->data);
-       
-     }
-   }
+{
+    if (rt != NULL)
+    {
+        postorder(rt->lchild);
+        postorder(rt->rchild);
+        printf("%d ", rt->data);
+    }
+}
 
+int main()
+{
+    int ch;
+    while (1)
+    {
+        printf("\n1.Insertion\n2.Deletion\n3.Display As Inorder\n4.Display As Preorder\n5.Display As Postorder\n6.EXIT\nEnter Your Choice:");
+        scanf("%d", &ch);
 
-void main()
-{  
-   int ch;
-   while(1)
-   {
-   printf("\n1.Insertion\n2.Deletion\n3.Display As Inorder\n4.Display As Preorder\n5.Display As Prerder\n6.EXIT\nEnter Your Choice:");
-   scanf("%d",&ch);
-   
-   switch(ch)
-   {
-     case 1:insert();
-     	    break;
-     case 2:
-            break;
-     case 3:inorder(root);
-            break;
-     case 4:preorder(root);
-            break;
-     case 5:postorder(root);
-            break;
-     case 6:exit(0);
-            break;
-     default:printf("Invalid Choice!!");
-     	     break;
-   }
+        switch (ch)
+        {
+            case 1:
+                insert();
+                break;
 
-   }
+            case 2:
+                
+                break;
+
+            case 3:
+                inorder(root);
+                break;
+
+            case 4:
+                preorder(root);
+                break;
+
+            case 5:
+                postorder(root);
+                break;
+
+            case 6:
+                exit(0);
+
+            default:
+                printf("Invalid Choice!!\n");
+                break;
+        }
+    }
+    return 0;
 }

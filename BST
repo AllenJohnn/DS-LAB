@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+// Create Structre
 struct node
 {  struct node *lchild;
    int data;
@@ -58,7 +59,7 @@ void insert()
 }
 
 
-
+// Inorder LNR
 void inorder(struct node *rt)
    { 
      if(rt!=NULL)
@@ -70,6 +71,7 @@ void inorder(struct node *rt)
      }
    }
    
+// PreOrder NLR  
 void preorder(struct node *rt)
    { 
      if(rt!=NULL)
@@ -82,7 +84,8 @@ void preorder(struct node *rt)
      }
    }
    
-   
+
+//PostOrder LRN   
 void postorder(struct node *rt)
    { 
      if(rt!=NULL)

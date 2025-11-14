@@ -1,20 +1,20 @@
 #include<stdio.h>
 #include<stdlib.h>
-//Creating a structure...
+
 struct node
 {  struct node *lchild;
    int data;
    struct node *rchild;
 };
 struct node *root=NULL,*new;
-int d;
 
 void create()
 {
  new=(struct node *)malloc(sizeof(struct node));
  printf("Enter the value: ");
- scanf("%d",&d);
- new->data=d;
+ int x;
+ scanf("%d",&x);
+ new->data=x;
  new->lchild=NULL;
  new->rchild=NULL;
 }
@@ -40,7 +40,7 @@ void search(struct node * rt)
   }
   else
   {
-    printf("INVALID...");
+    printf("Invalid");
   }
 }
 
@@ -60,46 +60,66 @@ void insert()
 
 
 void inorder(struct node *rt)
-   {
+   { 
      if(rt!=NULL)
-     {
+     { 
        inorder(rt->lchild);
        printf("%d ",rt->data);
        inorder(rt->rchild);
+      
      }
    }
    
 void preorder(struct node *rt)
-   {
+   { 
      if(rt!=NULL)
-     {
+     { 
        printf("%d ",rt->data);
        preorder(rt->lchild);
        preorder(rt->rchild);
+     
        
      }
    }
    
    
 void postorder(struct node *rt)
-   {
+   { 
      if(rt!=NULL)
-     {
+     { 
        postorder(rt->lchild);
        postorder(rt->rchild);
        printf("%d ",rt->data);
+       
      }
    }
 
 
 void main()
-{
+{  
+   int ch;
+   while(1)
+   {
+   printf("\n1.Insertion\n2.Deletion\n3.Display As Inorder\n4.Display As Preorder\n5.Display As Prerder\n6.EXIT\nEnter Your Choice:");
+   scanf("%d",&ch);
+   
+   switch(ch)
+   {
+     case 1:insert();
+     	    break;
+     case 2:
+            break;
+     case 3:inorder(root);
+            break;
+     case 4:preorder(root);
+            break;
+     case 5:postorder(root);
+            break;
+     case 6:exit(0);
+            break;
+     default:printf("Invalid Choice!!");
+     	     break;
+   }
 
-   insert();
-   insert();
-   insert();
-   insert();
-   inorder(root);
-   preorder(root);
-   postorder(root);
+   }
 }

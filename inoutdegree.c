@@ -42,7 +42,7 @@ if(adj[i][s]==1)
 
 {
 
-printf("The Incomming Edges Are : %d -> %d",i,s);
+printf("\nThe Incomming Edges Are : %d -> %d ",i,s);
 
 incount++;
 

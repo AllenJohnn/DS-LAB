@@ -1,51 +1,29 @@
 #include<stdio.h>
-
 #include<stdlib.h>
-
 int queue[10];
-
 int visited[10]={0};
-
 int f=-1,r=-1;
-
 int adj[10][10];
-
 int s,i,j,p,n;
 
 void enqueue(int s)
-
 {
-
 if(f==-1)
-
 f++;
-
 r++;
-
 queue[r]=s;
-
 }
 
 int dequeue()
-
 {
-
 if((f==-1)||(f>r))
-
 {
-
 return 0;
-
 }
-
 else
-
 {
-
 p=queue[f];
-
 f++;
-
 return p;
 
 }
@@ -102,11 +80,11 @@ void main()
 
 int v,n;
 
-printf("Enter the number of vertices: ");
+printf("Enter The Number Of Vertices: ");
 
 scanf("%d",&n);
 
-printf("Enter the adjacency matrix:\n");
+printf("Enter The Adjacency Matrix:\n");
 
 for(i=1;i<=n;i++)
 
@@ -124,7 +102,7 @@ scanf("%d",&adj[i][j]);
 
 }
 
-printf("Enter starting vertex: ");
+printf("Enter Starting Vertex: ");
 
 scanf("%d",&s);
 

@@ -68,6 +68,6 @@ outcount++;
 
 }
 
-printf("\nThe Outdegree Is : %d",outcount);
+printf("\nThe Outdegree Is : %d \n",outcount);
 
 }

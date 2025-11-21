@@ -2,9 +2,9 @@
 #include<stdlib.h>
 #define INF 999
 int adj[10][10];
-int i,j,n
+int i,j,n;
 int visited[10]={0};
-int a,b,mincost = 0;
+int a,b,mincost = 0,totalcost;
 int edges=0;
 
 int main()
@@ -26,7 +26,7 @@ int main()
 	visited[1] = 1;
 	while(edges < n-1)
 	{
-		int a,b,min;
+		int a,b,min=INF;
 		for(i=1;i<=n;i++)
 		{
 			if(visited[i] = 1)

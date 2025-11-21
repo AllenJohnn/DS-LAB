@@ -1,0 +1,57 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define INF 999
+int adj[10][10];
+int i,j,n
+int visited[10]={0};
+int a,b,mincost = 0;
+int edges=0;
+
+int main()
+{
+	printf("Enter The Number Of Vertices: ");
+	scanf("%d",&n);
+	printf("Enter The Adjacency Matrix:\n");
+	for(i=1;i<=n;i++)
+	{
+		for(j=1;j<=n;j++)
+		{
+			scanf("%d",&adj[i][j]);
+			if(adj[i][j]==0)
+			{
+				adj[i][j]=INF;
+			}		
+		}
+	}
+	visited[1] = 1;
+	while(edges < n-1)
+	{
+		int a,b,min;
+		for(i=1;i<=n;i++)
+		{
+			if(visited[i] = 1)
+			{
+				for(j=1;j<=n;j++)
+				{
+					if(visited[j]==0 || adj[i][j] != INF)
+					{
+						if(adj[i][j] < min)
+						{
+							min = adj[i][j];
+							a = i;
+							b = j;
+						}
+					}
+				}
+			}
+		}
+		printf("%d-->%d : cost = %d",a,b,min);
+		visited[b]=1;
+		edges++;
+		totalcost = totalcost+min;
+	}
+	printf("Total Cost Of Spanning Tree = %d",totalcost);
+	return 0;
+}						
+					
+	

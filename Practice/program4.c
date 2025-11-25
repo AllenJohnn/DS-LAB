@@ -1,9 +1,9 @@
 #include<stdio.h>
 void main(){
 int n,i,A[100],l,s;
-printf("Enter the no of items :");
+printf("Enter the no of Elements :");
 scanf("%d",&n);
-printf("Enter %d items :",n);
+printf("Enter %d Elements :",n);
 for(i=0;i<n;i++)
 {
 scanf("%d",&A[i]);

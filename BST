@@ -1,16 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
-
-// Create Structre
 struct node
 {  
     struct node *lchild;
     int data;
     struct node *rchild;
 };
-
 struct node *root = NULL, *new;
-
 void create()
 {
     new = (struct node *)malloc(sizeof(struct node));
@@ -21,31 +17,27 @@ void create()
     new->lchild = NULL;
     new->rchild = NULL;
 }
-
 void search(struct node *rt)
 {
-    if ((new->data < rt->data) && (rt->lchild == NULL))
+    if (new->data < rt->data)
     {
-        rt->lchild = new;
+        if (rt->lchild == NULL)
+            rt->lchild = new;
+        else
+            search(rt->lchild);
     }
-    else if ((new->data > rt->data) && (rt->rchild == NULL))
+    else if (new->data > rt->data)
     {
-        rt->rchild = new;
-    }
-    else if ((new->data < rt->data) && (rt->lchild != NULL))
-    {
-        search(rt->lchild);
-    }
-    else if ((new->data > rt->data) && (rt->rchild != NULL))
-    {
-        search(rt->rchild);
+        if (rt->rchild == NULL)
+            rt->rchild = new;
+        else
+            search(rt->rchild);
     }
     else
     {
-        printf("Invalid\n");
+        printf("Duplicate values are not allowed!\n");
     }
 }
-
 void insert()
 {
     create();
@@ -58,8 +50,43 @@ void insert()
         search(root);
     }
 }
-
-// Inorder LNR
+struct node* findMin(struct node* rt)
+{
+    while (rt && rt->lchild != NULL)
+        rt = rt->lchild;
+    return rt;
+}
+struct node* delete(struct node* rt, int value)
+{
+    if (rt == NULL)
+    {
+        printf("Value not found in the tree.\n");
+        return rt;
+    }
+    if (value < rt->data)
+        rt->lchild = delete(rt->lchild, value);
+    else if (value > rt->data)
+        rt->rchild = delete(rt->rchild, value);
+    else
+    {
+        if (rt->lchild == NULL)
+        {
+            struct node* temp = rt->rchild;
+            free(rt);
+            return temp;
+        }
+        else if (rt->rchild == NULL)
+        {
+            struct node* temp = rt->lchild;
+            free(rt);
+            return temp;
+        }
+        struct node* temp = findMin(rt->rchild);
+        rt->data = temp->data;
+        rt->rchild = delete(rt->rchild, temp->data);
+    }
+    return rt;
+}
 void inorder(struct node *rt)
 {
     if (rt != NULL)
@@ -69,8 +96,6 @@ void inorder(struct node *rt)
         inorder(rt->rchild);
     }
 }
-
-// PreOrder NLR  
 void preorder(struct node *rt)
 {
     if (rt != NULL)
@@ -80,8 +105,6 @@ void preorder(struct node *rt)
         preorder(rt->rchild);
     }
 }
-
-// PostOrder LRN   
 void postorder(struct node *rt)
 {
     if (rt != NULL)
@@ -91,40 +114,40 @@ void postorder(struct node *rt)
         printf("%d ", rt->data);
     }
 }
-
 int main()
 {
-    int ch;
+    int ch, value;
     while (1)
     {
-        printf("\n1.Insertion\n2.Deletion\n3.Display As Inorder\n4.Display As Preorder\n5.Display As Postorder\n6.EXIT\nEnter Your Choice:");
+        printf("\n1.Insertion\n2.Deletion\n3.Display As Inorder\n4.Display As Preorder\n5.Display As Postorder\n6.EXIT\nEnter Your Choice: ");
         scanf("%d", &ch);
-
         switch (ch)
         {
             case 1:
                 insert();
                 break;
-
             case 2:
-                
+                printf("Enter value to delete: ");
+                scanf("%d", &value);
+                root = delete(root, value);
                 break;
-
             case 3:
+                printf("Inorder: ");
                 inorder(root);
+                printf("\n");
                 break;
-
             case 4:
+                printf("Preorder: ");
                 preorder(root);
+                printf("\n");
                 break;
-
             case 5:
+                printf("Postorder: ");
                 postorder(root);
+                printf("\n");
                 break;
-
             case 6:
                 exit(0);
-
             default:
                 printf("Invalid Choice!!\n");
                 break;
